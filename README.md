@@ -11,8 +11,6 @@
 python -m venv .venv
 # Windows PowerShell
 .\.venv\Scripts\Activate.ps1
-# macOS/Linux
-source .venv/bin/activate
 ```
 
 3) Install deps:
@@ -22,8 +20,8 @@ pip install -r requirements.txt
 
 4) Set environment variables (create `.env`):
 ```
-DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/dbname
-FRONTEND_ORIGIN=https://your-frontend.onrender.com
+DATABASE_URL=postgresql://render_postgres_db_1vfe_user:n4rKi5tTM7S3dvhn6vrno5JAc3hkUoC9@dpg-d36oogeuk2gs73a6hpd0-a/render_postgres_db_1vfe
+FRONTEND_ORIGIN=https://okaz-frontend.onrender.com
 ```
 
 5) Run:
@@ -36,9 +34,9 @@ Open http://127.0.0.1:8000/docs
 ## Deploy on Render
 
 - **Build command:** `pip install -r requirements.txt`
-- **Start command:** `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+- **Start command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 - **Env vars:**
-  - `DATABASE_URL` = your Render Postgres connection string
-  - `FRONTEND_ORIGIN` = your frontend URL (or `*` during testing)
+  - `DATABASE_URL` = postgresql://render_postgres_db_1vfe_user:n4rKi5tTM7S3dvhn6vrno5JAc3hkUoC9@dpg-d36oogeuk2gs73a6hpd0-a/render_postgres_db_1vfe
+  - `FRONTEND_ORIGIN` = https://okaz-frontend.onrender.com
 
 Make sure your database already has the schema loaded (run the SQL we generated earlier), then import CSVs.
